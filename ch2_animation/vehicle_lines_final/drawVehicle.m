@@ -116,14 +116,10 @@ tailwing_l = 3*scale;
 tailwing_w = 10*scale;
 tail_h     = 3*scale;
 
-%Fuselage: 1,2,3,1,5,2,1,4,3,1,4,5,2,3,4,6,3,4,5,6,2,5...
-%Front Wing: ...newpoint1,7,8,9,10,newpoint1,6...
+%Fuselage: 1,2,3,1,5,2,1,4,3,1,4,5,2,3,4,6,3,4,5,6,2,5,6...
+%Front Wing: ...newpoint1,8,7,10,9,newpoint1,6...
 %Tail Wing Horizontal: ...13,14,11,12,6...
 %Tail Wing Vertical: 15,16,6
-
-%Newpoint1 is found using "similar triangles" method
-    %x = z = 0
-    %y = fuse_l2/(fuse_l2+fuse_l3)*fuse_w/2
 
 pts = [...
     fuse_l1, 0, 0;...   % pt 1
@@ -148,12 +144,6 @@ pts = [...
     -fuse_l3, 0, 0;...  % pt 6
     fuse_l2, fuse_w/2, -fuse_h/2;...   % pt 2
     fuse_l2, fuse_w/2, fuse_h/2;...  % pt 5
-%     0, fuse_l2/(fuse_l2+fuse_l3)*fuse_w/2, 0;...   % newpoint 1
-%     0, wing_w/2, 0;... % pt 7
-%     -wing_l, wing_w/2, 0;...   % pt 8
-%     -wing_l, -wing_w/2, 0;...  % pt 9
-%     0, -wing_w/2, 0;...   % pt 10
-%     0, fuse_l2/(fuse_l2+fuse_l3)*fuse_w/2, 0;...  % newpoint 1
     -fuse_l3, 0, 0;...   % pt 6
     -wing_l, 0, 0;... %newpoint 1
     -wing_l, wing_w/2, 0;...   % pt 8
