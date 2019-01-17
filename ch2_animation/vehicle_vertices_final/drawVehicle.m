@@ -1,3 +1,8 @@
+%TO DO:
+%    1) get rid of erasemode
+%    2) get the "lines"a one working too, no need to show all the
+%    functionalities for that one but must still show up on the video
+%    3) make the video as short as possible
 
 function drawVehicle(uu,V,F,patchcolors)
 
@@ -120,12 +125,12 @@ end
 function [V,F,facecolors] = defineVehicleBody
 
 % Define the dimensions of the airframe
-    scale      = 1/20;
+    scale      = 1/5;
 
     fuse_l1    = 7*scale;
     fuse_l2    = 4*scale;
     fuse_l3    = 15*scale;
-    fuse_h     = 2*scale; %what is this supposed to be? not provided
+    fuse_h     = 2*scale; %assumed to have a square tip base
     fuse_w     = 2*scale;
     wing_l     = 6*scale;
     wing_w     = 20*scale;
@@ -136,10 +141,10 @@ function [V,F,facecolors] = defineVehicleBody
 % Define the vertices (physical location of vertices
 V = [...
     fuse_l1, 0, 0;...                           % pt 1
-    fuse_l2, fuse_w/2, -fuse_h/2;...             % pt 2
-    fuse_l2, -fuse_w/2, -fuse_h/2;...            % pt 3
-    fuse_l2, -fuse_w/2, fuse_h/2;...           % pt 4
-    fuse_l2, fuse_w/2, fuse_h/2;...            % pt 5
+    fuse_l2, fuse_w/2, -fuse_h/2;...            % pt 2
+    fuse_l2, -fuse_w/2, -fuse_h/2;...           % pt 3
+    fuse_l2, -fuse_w/2, fuse_h/2;...            % pt 4
+    fuse_l2, fuse_w/2, fuse_h/2;...             % pt 5
     -fuse_l3, 0, 0;...                          % pt 6
     0, wing_w/2, 0;...                          % pt 7
     -wing_l, wing_w/2, 0;...                    % pt 8
@@ -150,22 +155,22 @@ V = [...
     -fuse_l3, -tailwing_w/2, 0;...              % pt 13
     -fuse_l3+tailwing_l, -tailwing_w/2, 0;...   % pt 14
     -fuse_l3+tailwing_l, 0, 0;...               % pt 15
-    -fuse_l3, 0, -tail_h;...                     % pt 16
+    -fuse_l3, 0, -tail_h;...                    % pt 16
     ]';
 
 % define faces as a list of vertices numbered above
   F = [...
-         1, 2, 5, 1;...  % fuselage tip right side
-         1, 3, 4, 1;...  % fuselage tip left side
-         1, 4, 5, 1;...  % fuselage tip bottom side 
-         1, 2, 3, 1;...  % fuselage tip top side
-         2, 5, 6, 2;...  % fuselage right side
-         3, 4, 6, 3;...  % fuselage left side
-         4, 5, 6, 4;...  % fuselage bottom side 
-         2, 3, 6, 2;...  % fuselage top side
+         1, 2, 5, NaN;...  % fuselage tip right side
+         1, 3, 4, NaN;...  % fuselage tip left side
+         1, 4, 5, NaN;...  % fuselage tip bottom side 
+         1, 2, 3, NaN;...  % fuselage tip top side
+         2, 5, 6, NaN;...  % fuselage right side
+         3, 4, 6, NaN;...  % fuselage left side
+         4, 5, 6, NaN;...  % fuselage bottom side 
+         2, 3, 6, NaN;...  % fuselage top side
          7, 8, 9, 10;...  % wing
          11, 12, 13, 14;...  % tailwing horizontal
-         6, 15, 16, 6;...  % tailwing vertical
+         6, 15, 16, NaN;...  % tailwing vertical
         ];
 
 % define colors for each face    
